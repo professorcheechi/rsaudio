@@ -1,0 +1,35 @@
+#!/bin/zsh
+
+## This is still a WIP ## 
+
+restart_chrome(){
+    printf "\nKill Google Chrome \n"
+    sudo killall Google\ Chrome
+    printf "done \n"
+
+    printf "\nRestart Google Chrome \n"
+    open -a Gooogle\ Chrome
+    printf "done \n"
+}
+
+## MAIN ## 
+
+printf "Kill coreaudiod \n"
+sudo killall coreaudiod
+printf "done \n"
+
+
+printf "Restart Google Chrome? "
+    read ChRestart
+
+case $ChRestart in
+    [yY]*) restart_chrome ;;
+    *    ) exit 0 ;;
+esac
+
+printf "\n"
+
+exit 0
+
+## End ## 
+## 
