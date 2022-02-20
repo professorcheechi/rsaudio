@@ -1,6 +1,26 @@
 #!/bin/zsh
 
-## This is still a WIP ## 
+## . includes ##
+## END includes ##
+
+## FUNCTIONS ##
+
+usage(){
+    printf "\n\tThe purpose of this script is to address audio issues with sleep/suspend in MacOS Monterey \n\n"
+    printf "\nUsage: rsaudio [-c|a] "
+    printf "\n\t-c: restart only Google Chrome "
+    printf "\n\t-a: restart only coreaudiod "
+    printf "\nNo argument: restart coreaudiod (will prompt for sudo password) "
+    printf "\nthen prompt to restart Google Chrome \n"
+    printf "\n\n\t## This is still a WIP ## \n\n"
+exit 0
+}
+
+restart_audio(){
+    printf "Kill coreaudiod \n"
+    sudo killall coreaudiod
+    printf "done \n"
+}
 
 restart_chrome(){
     printf "\nKill Google Chrome \n"
@@ -12,24 +32,34 @@ restart_chrome(){
     printf "done \n"
 }
 
+no_flags(){
+    restart_audio
+    printf "Restart Google Chrome? "
+        read ChRestart
+        case $ChRestart in
+            [yY]*) restart_chrome ;;
+            *    ) exit 0 ;;
+        esac
+}
+
+## END FUNCTIONS
+
 ## MAIN ## 
 
-printf "Kill coreaudiod \n"
-sudo killall coreaudiod
-printf "done \n"
-
-
-printf "Restart Google Chrome? "
-    read ChRestart
-
-case $ChRestart in
-    [yY]*) restart_chrome ;;
-    *    ) exit 0 ;;
-esac
+if [ -z "$1" ]; then
+    no_flags
+    else 
+        case $1 in
+            -c) restart_audio ; exit 0  ;;
+            -a) restart_chrome ; exit 0 ;;
+            * ) usage                   ;;
+        esac
+fi
 
 printf "\n"
-
 exit 0
 
-## End ## 
-## 
+## END MAIN ## 
+
+## NOTES / ADDENDA / VERSION ##
+## END NOTES / ADDENDA / VERSION ##
