@@ -13,7 +13,6 @@ usage(){
     printf "\nNo argument: restart coreaudiod (will prompt for sudo password) "
     printf "\nthen prompt to restart Google Chrome \n"
     printf "\n\n\t## This is still a WIP ## \n\n"
-exit 0
 }
 
 restart_audio(){
@@ -52,7 +51,8 @@ if [ -z "$1" ]; then
         case "$1" in
             -a) restart_audio ; exit 0  ;;
             -c) restart_chrome ; exit 0 ;;
-            * ) usage                   ;;
+            -h) usage ; exit 0          ;;
+            * ) usage ; exit 1          ;;
         esac
 fi
 
