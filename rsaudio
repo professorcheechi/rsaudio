@@ -49,9 +49,9 @@ no_flags(){
 if [ -z "$1" ]; then
     no_flags
     else 
-        case $1 in
-            -c) restart_audio ; exit 0  ;;
-            -a) restart_chrome ; exit 0 ;;
+        case "$1" in
+            -a) restart_audio ; exit 0  ;;
+            -c) restart_chrome ; exit 0 ;;
             * ) usage                   ;;
         esac
 fi
