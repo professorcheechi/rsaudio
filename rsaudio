@@ -27,7 +27,7 @@ restart_chrome(){
     printf "done \n"
 
     printf "\nRestart Google Chrome \n"
-    open -a Gooogle\ Chrome
+    open -a Google\ Chrome
     printf "done \n"
 }
 
