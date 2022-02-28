@@ -23,7 +23,8 @@ restart_audio(){
 
 restart_chrome(){
     printf "\nKill Google Chrome \n"
-    sudo killall Google\ Chrome
+    #sudo killall Google\ Chrome
+    sudo killall "Google Chrome"
     printf "done \n"
 
     printf "\nRestart Google Chrome \n"
