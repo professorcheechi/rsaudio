@@ -25,6 +25,7 @@ restart_chrome(){
     printf "\nKill Google Chrome \n"
     #sudo killall Google\ Chrome
     sudo killall "Google Chrome"
+    wait 5
     printf "done \n"
 
     printf "\nRestart Google Chrome \n"
